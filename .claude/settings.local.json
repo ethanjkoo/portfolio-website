@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Sleep -Seconds 3; $pages = @\\(\"/\", \"/services\", \"/projects\", \"/contact\"\\); foreach \\($p in $pages\\) { $r = Invoke-WebRequest -Uri \"http://localhost:3000$p\" -UseBasicParsing -ErrorAction SilentlyContinue; Write-Output \"$p => $\\($r.StatusCode\\)\" })"
+    ]
+  }
+}
