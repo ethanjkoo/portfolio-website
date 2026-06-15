@@ -93,10 +93,10 @@ export default function AboutPage() {
                   Phone
                 </p>
                 <a
-                  href="tel:+14805804433"
+                  href="tel:+14805602233"
                   className="text-navy font-medium hover:text-navy/60 transition-colors"
                 >
-                  (480) 580-4433
+                  (480) 560-2233
                 </a>
               </div>
               <div>
