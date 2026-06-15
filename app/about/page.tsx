@@ -119,8 +119,7 @@ export default function AboutPage() {
               <div className="border border-[#9B1C1C]/20 bg-[#9B1C1C]/5 p-10">
                 <h3 className="text-xl font-bold text-navy">Thank you.</h3>
                 <p className="mt-3 text-[#0A0A0A]/70">
-                  Your message has been received. We&rsquo;ll be in touch within one business
-                  day.
+                  Your message has been received. We&rsquo;ll be in touch soon.
                 </p>
               </div>
             ) : (
