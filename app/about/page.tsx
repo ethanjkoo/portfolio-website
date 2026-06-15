@@ -4,6 +4,8 @@ import { useState, FormEvent } from "react";
 
 export default function AboutPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -17,9 +19,21 @@ export default function AboutPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    setLoading(false);
+    if (res.ok) {
+      setSubmitted(true);
+    } else {
+      setError("Something went wrong. Please try again or email us directly.");
+    }
   }
 
   return (
@@ -165,11 +179,15 @@ export default function AboutPage() {
                     className="border border-black/20 px-4 py-3 text-sm text-[#0A0A0A] focus:outline-none focus:border-navy transition-colors resize-none"
                   />
                 </div>
+                {error && (
+                  <p className="text-sm text-[#9B1C1C]">{error}</p>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-[#9B1C1C] text-white py-4 text-xs font-semibold tracking-widest uppercase hover:bg-[#7a1515] transition-colors"
+                  disabled={loading}
+                  className="w-full bg-[#9B1C1C] text-white py-4 text-xs font-semibold tracking-widest uppercase hover:bg-[#7a1515] transition-colors disabled:opacity-60"
                 >
-                  Send Message
+                  {loading ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}
