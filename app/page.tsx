@@ -23,38 +23,39 @@ export default function HomePage() {
           </p>
           <div className="mt-10">
             <Link
-              href="/about"
+              href="#about"
               className="inline-block bg-[#9B1C1C] text-white px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-[#7a1515] transition-colors"
             >
-              Start a Project
+              Learn More
             </Link>
           </div>
         </div>
       </section>
 
-      {/* About snippet */}
-      <section className="bg-white py-24 px-6 lg:px-8 border-t border-black/10">
+      {/* About */}
+      <section id="about" className="bg-white py-24 px-6 lg:px-8 border-t border-black/10 scroll-mt-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-extrabold text-navy mb-6">
               About KOO Design Build
             </h2>
             <p className="text-[#0A0A0A] leading-relaxed">
-              KOO Design Build is a full-service architecture and construction management firm
-              specializing in government, commercial, and multifamily projects. With decades of
-              combined experience, we deliver precision-built environments that meet the highest
-              standards of design and code compliance.
+              A design-construction firm founded in 1998, KOO maintains a broad spectrum of
+              practice, providing services in architectural, engineering and construction to the
+              U.S. Federal government, local municipalities (state, county, city, school
+              districts, and other public sector entities), and commercial clients.
             </p>
             <p className="text-[#0A0A0A] leading-relaxed mt-4">
-              From concept to certificate of occupancy, we manage every phase with clarity,
-              accountability, and craft.
+              Throughout our corporate history, our successful past performance of serving
+              private and public construction markets has provided our team with a depth of
+              knowledge and expertise in every aspect of building design and construction.
             </p>
           </div>
           <div className="flex flex-col gap-8">
             {[
-              { stat: "22+", label: "Projects Completed" },
+              { stat: "1998", label: "Founded" },
+              { stat: "25+", label: "Years of Practice" },
               { stat: "AZ & CA", label: "Licensed States" },
-              { stat: "ICC", label: "Certified" },
             ].map(({ stat, label }) => (
               <div key={label} className="border-l-2 border-[#9B1C1C] pl-6">
                 <p className="text-3xl font-extrabold text-navy">{stat}</p>

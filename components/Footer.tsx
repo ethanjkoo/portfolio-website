@@ -5,22 +5,24 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "/#about", label: "About" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <Image
-              src="/logo/logo_concise.png"
-              alt="KOO Design Build"
-              height={64}
-              width={64}
-              className="h-10 sm:h-12 md:h-14 w-auto object-contain brightness-0 invert"
-            />
+            <div className="inline-block bg-white rounded-md px-4 py-3">
+              <Image
+                src="/logo/logo_kdb.jpg"
+                alt="KOO Design Build"
+                height={80}
+                width={264}
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain"
+              />
+            </div>
             <p className="mt-5 text-white/60 text-sm leading-relaxed max-w-xs">
               Architecture, precision, and craft — delivering design-build excellence across the Southwest.
             </p>
@@ -42,28 +44,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-5">
-              Contact
-            </h4>
-            <p>
-              <a
-                href="tel:+14805804433"
-                className="text-white/70 hover:text-white text-sm transition-colors"
-              >
-                (480) 580-4433
-              </a>
-            </p>
-            <p className="mt-3">
-              <a
-                href="mailto:hoonHkoo@kooDB.com"
-                className="text-white/70 hover:text-white text-sm transition-colors"
-              >
-                hoonHkoo@kooDB.com
-              </a>
-            </p>
           </div>
         </div>
       </div>

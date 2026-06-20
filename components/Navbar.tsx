@@ -9,7 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "/#about", label: "About" },
 ];
 
 export default function Navbar() {
@@ -32,11 +32,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 sm:h-22 md:h-24 flex items-center justify-between">
         <Link href="/" onClick={() => setMenuOpen(false)}>
           <Image
-            src="/logo/logo_full.png"
+            src="/logo/logo_kdb.jpg"
             alt="KOO Design Build"
-            height={56}
-            width={240}
-            className="h-10 sm:h-12 md:h-16 w-auto object-contain"
+            height={80}
+            width={264}
+            className="h-8 sm:h-10 md:h-12 w-auto object-contain"
             priority
           />
         </Link>
