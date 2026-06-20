@@ -5,7 +5,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/#about", label: "About" },
 ];
 
 export default function Footer() {
@@ -51,7 +50,7 @@ export default function Footer() {
       <div className="border-t-2 border-[#9B1C1C]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <p className="text-white/40 text-xs">
-            © 2019 All Rights Reserved by Koo Design Build
+            © {new Date().getFullYear()} KOO Design Build. All rights reserved.
           </p>
         </div>
       </div>

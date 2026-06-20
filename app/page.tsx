@@ -21,19 +21,25 @@ export default function HomePage() {
           <p className="mt-8 text-xl lg:text-2xl text-[#0A0A0A] font-light tracking-wide">
             Architecture. Precision. Craft.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="#about"
+              href="/projects"
               className="inline-block bg-[#9B1C1C] text-white px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-[#7a1515] transition-colors"
             >
-              Learn More
+              View Our Work
+            </Link>
+            <Link
+              href="/services"
+              className="inline-block border border-navy/20 text-navy px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:border-navy/50 transition-colors"
+            >
+              Our Services
             </Link>
           </div>
         </div>
       </section>
 
       {/* About */}
-      <section id="about" className="bg-white py-24 px-6 lg:px-8 border-t border-black/10 scroll-mt-24">
+      <section className="bg-white py-24 px-6 lg:px-8 border-t border-black/10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-extrabold text-navy mb-6">
