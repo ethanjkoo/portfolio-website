@@ -49,7 +49,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group">
       {/* Image / placeholder with hover overlay */}
-      <div className="relative aspect-video bg-navy/5 border border-black/10 overflow-hidden">
+      <div className="relative h-32 sm:h-36 bg-navy/5 border border-black/10 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center text-navy/20 text-xs uppercase tracking-widest">
           Project Photo
         </div>

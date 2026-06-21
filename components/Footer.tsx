@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="inline-block bg-white rounded-md px-4 py-3">
               <Image
@@ -41,6 +41,31 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-5">
+              Contact
+            </h4>
+            <p className="text-white/70 text-sm">KOO design-build, inc. (dba: KDB)</p>
+            <ul className="mt-3 flex flex-col gap-3">
+              <li>
+                <a
+                  href="mailto:Info@kooDB.com"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  Info@kooDB.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.kooDB.com"
+                  className="text-white/70 hover:text-white text-sm transition-colors"
+                >
+                  www.kooDB.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
