@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
 ];
 
@@ -23,7 +22,7 @@ export default function Footer() {
               />
             </div>
             <p className="mt-5 text-white/60 text-sm leading-relaxed max-w-xs">
-              Architecture, precision, and craft — delivering design-build excellence across the Southwest.
+              Assessment, planning, design, and construction — serving federal, state, tribal, and institutional clients since 1998.
             </p>
           </div>
 

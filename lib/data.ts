@@ -1,133 +1,204 @@
-export interface Service {
-  id: string;
+export type CapabilityId = "design-build" | "modernization" | "assessment";
+
+export interface Capability {
+  id: CapabilityId;
   title: string;
-  description: string;
+  tagline: string;
+  items: string[];
 }
 
 export interface Project {
   id: string;
   title: string;
-  location: string;
   client: string;
-  year: number;
-  image: string;
+  location: string;
+  year: string;
+  contractType: string;
   description: string;
-  category: "federal" | "hud";
+  image: string;
+  category: CapabilityId;
 }
 
-export const services: Service[] = [
-  {
-    id: "architecture-design",
-    title: "Architecture & Design",
-    description:
-      "Full architectural design services from schematic design through construction documents, tailored for commercial, government, and residential projects.",
-  },
+export const capabilities: Capability[] = [
   {
     id: "design-build",
     title: "Design-Build",
-    description:
-      "Integrated design and construction delivery under a single contract, streamlining communication and reducing project risk for owners.",
+    tagline: "Integrated design and construction delivery from concept through completion.",
+    items: ["Architecture", "Engineering", "Design-Build", "Construction Management"],
   },
   {
-    id: "construction-management",
-    title: "Construction Management",
-    description:
-      "On-site and program-level construction management ensuring quality control, schedule adherence, and budget accountability.",
+    id: "modernization",
+    title: "Facility Modernization & Infrastructure Upgrades",
+    tagline: "Renewing aging facilities and critical building systems.",
+    items: [
+      "HVAC Systems",
+      "Building Renovations",
+      "Infrastructure Improvements",
+      "Critical Facility Upgrades",
+    ],
   },
   {
-    id: "icc-plan-review",
-    title: "ICC Plan Review",
-    description:
-      "International Code Council certified plan review for code compliance across building, mechanical, plumbing, and electrical disciplines.",
-  },
-  {
-    id: "icc-inspections",
-    title: "ICC Building Inspections",
-    description:
-      "Certified building inspections for new construction, additions, and alterations to verify code compliance at every project phase.",
-  },
-  {
-    id: "hud-inspections",
-    title: "HUD Inspection Services",
-    description:
-      "Federally compliant inspections for HUD-financed multifamily housing, including payment monitoring, prevailing wage compliance, and final inspections.",
+    id: "assessment",
+    title: "Facility Assessment & Capital Planning",
+    tagline: "Evaluating existing assets to guide planning and investment.",
+    items: [
+      "Property Condition Assessments",
+      "Facility Evaluations",
+      "Construction Monitoring",
+      "Capital Planning",
+      "Due Diligence",
+    ],
   },
 ];
 
 export const projects: Project[] = [
+  // Design-Build
   {
-    id: "hangar-renovation",
-    title: "Hangar Renovation",
-    location: "Tucson, AZ",
-    client: "U.S. Army Corps of Engineers",
-    year: 2023,
+    id: "mrap-egress-trainer",
+    title: "MRAP Egress Trainer Facility",
+    client: "Marine Corps Air Station Yuma (MCAS Yuma)",
+    location: "Yuma, Arizona",
+    year: "2010",
+    contractType: "Design-Build",
+    description:
+      "Design-build delivery of a pre-engineered training facility to house a Mine Resistant Ambush Protected (MRAP) Egress Trainer, including structural design, reinforced concrete foundations, utility connections, security fencing, electrical systems, and supporting site improvements.",
     image: "/images/project-1.jpg",
-    description: "Comprehensive renovation of a military aircraft hangar facility.",
-    category: "federal",
+    category: "design-build",
   },
   {
-    id: "marin-mrap",
-    title: "Marin MRAP Egress Trainer Building",
-    location: "Yuma, AZ",
-    client: "U.S. Department of the Navy",
-    year: 2022,
+    id: "calexico-fueling-station",
+    title: "Calexico Border Patrol Fueling Station",
+    client: "U.S. Army Corps of Engineers (USACE)",
+    location: "Calexico, California",
+    year: "2013",
+    contractType: "Design-Build – Infrastructure Development",
+    description:
+      "Design-build construction of a new fueling station featuring a 12,000-gallon above-ground fuel storage tank, fueling equipment, concrete fueling aprons, shade canopy, and associated site improvements.",
     image: "/images/project-2.jpg",
-    description: "Pre-engineered building for Mine-Resistant Ambush Protected vehicle egress training operations.",
-    category: "federal",
+    category: "design-build",
   },
   {
-    id: "hud-mortgage-housing",
-    title: "Mortgage-Insured Housing",
-    location: "Nevada & Arizona",
-    client: "HUD — Federally Financed",
-    year: 2024,
+    id: "grand-canyon-ranger-quarters",
+    title: "Grand Canyon Ranger Station Living Quarters",
+    client: "Federal Aviation Administration (FAA)",
+    location: "Tusayan, Arizona",
+    year: "2016",
+    contractType: "Design-Build – Housing Development",
+    description:
+      "Design-build construction of six permanent residential units for FAA personnel within Grand Canyon National Park, including ADA-accessible housing accommodations and supporting site improvements.",
     image: "/images/project-3.jpg",
-    description:
-      "Construction monitoring and inspection services for HUD mortgage-insured multifamily housing. Scope includes reviewing payment requests, change orders, and conducting final inspections.",
-    category: "hud",
+    category: "design-build",
   },
   {
-    id: "hud-refinanced-apartments",
-    title: "Refinanced Apartment Communities",
-    location: "Nevada & Arizona",
-    client: "HUD — Federally Financed",
-    year: 2023,
+    id: "usfs-payson-helibase",
+    title: "USFS Tonto National Forest Payson Helibase",
+    client: "USDA Forest Service (USFS)",
+    location: "Payson, Arizona",
+    year: "2023",
+    contractType: "Design-Build – Aviation Support Facility",
+    description:
+      "Design-build delivery of a new helibase facility supporting U.S. Forest Service wildfire operations, including site development, helicopter landing areas, administrative facilities, maintenance buildings, utilities, and supporting infrastructure.",
     image: "/images/project-4.jpg",
-    description:
-      "Construction management and inspection services for refinanced multifamily apartment projects, ensuring compliance with HUD requirements throughout.",
-    category: "hud",
+    category: "design-build",
   },
+
+  // Facility Modernization & Infrastructure Upgrades
   {
-    id: "hud-nursing-homes",
-    title: "Nursing Home Facilities",
-    location: "Nevada & Arizona",
-    client: "HUD — Federally Financed",
-    year: 2022,
+    id: "davis-monthan-hangar",
+    title: "Davis-Monthan AFB Hangar Renovations",
+    client: "U.S. Army Corps of Engineers (USACE)",
+    location: "Davis-Monthan Air Force Base, Arizona",
+    year: "2014",
+    contractType: "Building Modernization",
+    description:
+      "Renovated aircraft hangar and administrative facilities, including HVAC modifications, electrical upgrades, communications infrastructure improvements, life-safety enhancements, interior renovations, and building system modernization.",
     image: "/images/project-5.jpg",
-    description:
-      "HUD inspection services for nursing home construction, including schedule tracking, prevailing wage compliance verification, and final inspections.",
-    category: "hud",
+    category: "modernization",
   },
   {
-    id: "hud-senior-housing",
-    title: "Senior Housing Development",
-    location: "Nevada & Arizona",
-    client: "HUD — Federally Financed",
-    year: 2021,
+    id: "nps-facilities-rehab",
+    title: "NPS National Park Facilities Rehabilitation",
+    client: "National Park Service (NPS)",
+    location: "Multiple NPS Facilities, Arizona",
+    year: "Ongoing",
+    contractType: "Facility Rehabilitation & Infrastructure Improvements",
+    description:
+      "Provided rehabilitation and infrastructure improvement services at multiple National Park Service facilities, including visitor center renovations, employee housing upgrades, maintenance facility improvements, utility infrastructure enhancements, and pavement preservation projects.",
     image: "/images/project-6.jpg",
-    description:
-      "Full construction monitoring for federally financed senior housing from groundbreaking through occupancy, including payment request review and change order tracking.",
-    category: "hud",
+    category: "modernization",
   },
   {
-    id: "hud-accessible-housing",
-    title: "Accessible Housing",
-    location: "Nevada & Arizona",
-    client: "HUD — Federally Financed",
-    year: 2020,
-    image: "/images/project-7.jpg",
+    id: "nps-organ-pipe-hvac",
+    title: "NPS Organ Pipe Cactus National Monument HVAC Modernization",
+    client: "National Park Service (NPS)",
+    location: "Organ Pipe Cactus National Monument, Arizona",
+    year: "2023",
+    contractType: "HVAC Modernization",
     description:
-      "HUD construction management for ADA-compliant residential projects serving people with disabilities. Ensured prevailing wage compliance and thorough payment review.",
-    category: "hud",
+      "Modernized HVAC systems serving 16 staff housing units and a maintenance facility, including replacement of aging mechanical equipment, controls integration, ductwork improvements, and associated building system upgrades to improve reliability, energy efficiency, and occupant comfort.",
+    image: "/images/project-7.jpg",
+    category: "modernization",
+  },
+  {
+    id: "fws-san-luis-hvac",
+    title: "U.S. Fish & Wildlife Service San Luis Administrative Building HVAC Replacement",
+    client: "U.S. Fish & Wildlife Service (FWS)",
+    location: "San Luis, California",
+    year: "2026",
+    contractType: "Design-Build HVAC Modernization",
+    description:
+      "Design-build replacement of aging HVAC equipment serving an administrative facility, including installation of new mechanical systems, controls upgrades, and associated building improvements to enhance reliability, energy efficiency, and occupant comfort.",
+    image: "/images/project-1.jpg",
+    category: "modernization",
+  },
+
+  // Facility Assessment & Capital Planning
+  {
+    id: "pca-astm-e2018",
+    title: "Property Condition Assessments (ASTM E2018)",
+    client: "AEI Consultants, BBG, EBI Consulting, Partner Engineering & Science, NV5, and Nova Group",
+    location: "Western United States",
+    year: "2019–Present",
+    contractType: "Property Condition Assessment (PCA)",
+    description:
+      "Completed hundreds of Property Condition Assessments in accordance with ASTM E2018 standards for multifamily, commercial, industrial, hospitality, healthcare, and institutional properties, supporting due diligence, lending, acquisition, capital planning, and asset management decisions.",
+    image: "/images/project-2.jpg",
+    category: "assessment",
+  },
+  {
+    id: "hud-multifamily-inspection",
+    title: "HUD Multifamily Housing Construction Inspection",
+    client: "U.S. Department of Housing and Urban Development (HUD)",
+    location: "Arizona & Nevada",
+    year: "2011–2018",
+    contractType: "Construction Monitoring & Quality Assurance Inspection",
+    description:
+      "Provided construction monitoring, contract administration, ADA compliance reviews, and quality assurance inspections for HUD-funded multifamily housing rehabilitation and new construction projects, including senior housing developments, apartment complexes, and more than 1,000 project site inspections.",
+    image: "/images/project-3.jpg",
+    category: "assessment",
+  },
+  {
+    id: "luke-afb-f35",
+    title: "Luke AFB Civil Squadron F-35 Program Support",
+    client: "U.S. Air Force",
+    location: "Luke Air Force Base, Arizona",
+    year: "2015–2017",
+    contractType: "Construction Management & Quality Assurance Inspection",
+    description:
+      "Provided construction management, quality assurance inspections, and owner support services for facility improvement projects supporting the F-35 program, including fire protection upgrades, fuel infrastructure improvements, building system modernization, and interior renovations.",
+    image: "/images/project-4.jpg",
+    category: "assessment",
+  },
+  {
+    id: "htha-winslow-apartments",
+    title: "HTHA Winslow Apartment Complex",
+    client: "Hopi Tribal Housing Authority (HTHA)",
+    location: "Winslow, Arizona",
+    year: "2025–2027",
+    contractType: "Construction Monitoring & Quality Assurance Inspection",
+    description:
+      "Provided construction monitoring, quality assurance inspections, design review support, and contract administration services for a new multifamily housing development, including site development, utility infrastructure, building construction observations, and occupancy certification support.",
+    image: "/images/project-5.jpg",
+    category: "assessment",
   },
 ];
