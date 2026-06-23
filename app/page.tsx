@@ -90,14 +90,13 @@ export default function HomePage() {
                 <h3 className="mt-5 text-base font-bold text-navy group-hover:text-navy/70 transition-colors">
                   {capability.title}
                 </h3>
-                <ul className="mt-4 space-y-1.5">
+                <ul className="mt-4 space-y-2">
                   {capability.items.map((item) => (
                     <li
                       key={item}
-                      className="text-sm text-[#0A0A0A]/60 leading-relaxed flex items-start gap-2"
+                      className="text-sm text-[#0A0A0A]/60 leading-relaxed border-l border-[#9B1C1C]/40 pl-3"
                     >
-                      <span className="text-[#9B1C1C] mt-px">•</span>
-                      <span>{item}</span>
+                      {item}
                     </li>
                   ))}
                 </ul>

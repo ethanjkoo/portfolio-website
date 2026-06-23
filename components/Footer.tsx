@@ -48,8 +48,7 @@ export default function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-5">
               Contact
             </h4>
-            <p className="text-white/70 text-sm">KOO design-build, inc. (dba: KDB)</p>
-            <ul className="mt-3 flex flex-col gap-3">
+            <ul className="flex flex-col gap-3">
               <li>
                 <a
                   href="mailto:Info@kooDB.com"
