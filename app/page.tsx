@@ -1,23 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 import { capabilities } from "@/lib/data";
-import ServiceIcon from "@/components/ServiceIcon";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
       <section className="min-h-screen flex flex-col justify-center bg-white px-6 lg:px-8 pt-16">
-        <div className="max-w-7xl mx-auto w-full py-24 lg:py-32">
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-navy leading-none tracking-tight">
-            KOO
-            <br />
-            Design Build
-          </h1>
-          <div className="mt-6 h-px w-24 bg-[#9B1C1C]" />
+        <div className="max-w-7xl mx-auto w-full py-24 lg:py-32 flex flex-col items-center text-center">
+          <Image
+            src="/logo/logo_kdb.jpg"
+            alt="KOO Design Build"
+            width={880}
+            height={267}
+            className="w-full max-w-md sm:max-w-lg lg:max-w-2xl h-auto object-contain"
+            priority
+          />
+          <div className="mt-8 h-px w-24 bg-[#9B1C1C]" />
           <p className="mt-8 text-xl lg:text-2xl text-[#0A0A0A] font-light tracking-wide">
             Assessment • Planning • Design • Construction
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/projects"
               className="inline-block bg-[#9B1C1C] text-white px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-[#7a1515] transition-colors"
@@ -86,8 +89,7 @@ export default function HomePage() {
                 href={`/projects#${capability.id}`}
                 className="flex flex-col border border-black/10 p-8 hover:border-navy/20 transition-colors group"
               >
-                <ServiceIcon id={capability.id} />
-                <h3 className="mt-5 text-base font-bold text-navy group-hover:text-navy/70 transition-colors">
+                <h3 className="text-base font-bold text-navy group-hover:text-navy/70 transition-colors">
                   {capability.title}
                 </h3>
                 <ul className="mt-4 space-y-2">
