@@ -49,7 +49,7 @@ export default function Navbar() {
                   href={href}
                   className={`relative text-navy text-sm font-medium tracking-wide pb-1 transition-colors hover:text-navy/60 ${
                     active
-                      ? "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[#9B1C1C]"
+                      ? "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-brand-red"
                       : ""
                   }`}
                 >

@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t-2 border-[#9B1C1C]">
+      <div className="border-t-2 border-brand-red">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <p className="text-white/40 text-xs">
             © {new Date().getFullYear()} KOO Design Build. All rights reserved.

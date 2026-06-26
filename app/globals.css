@@ -3,6 +3,7 @@
 @theme inline {
   --color-navy: #1B2A4A;
   --color-brand-red: #9B1C1C;
+  --color-brand-red-dark: #7A1515;
   --color-brand-black: #0A0A0A;
   --font-sans: var(--font-inter);
 }

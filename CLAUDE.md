@@ -9,36 +9,35 @@ Professional website for KOO Design Build (koodb.com), a design-construction fir
 - **No physical address** anywhere on the site — phone and email only
 - **Red is an accent only** — never used for large background fills, only CTAs, thin lines, active nav indicator
 - **No dark hero sections** — all page backgrounds are white; navy is for text/headings and the footer only
-- **Contact form is UI-only** — shows a success state on submit, does not send email (Resend integration is pending)
+- **Contact is email/link only** — there is no contact form; the Footer shows email + site link
 
-## Color System (defined in `app/globals.css`)
+## Color System (defined as `@theme` tokens in `app/globals.css`)
+Use the Tailwind tokens, not inline hex — e.g. `bg-brand-red`, `text-brand-black`.
 - `navy` → `#1B2A4A` — headings, nav links, footer background
-- `#9B1C1C` — red accent, CTAs, underline accents (used inline, not as a Tailwind custom name)
-- `#0A0A0A` — body text
+- `brand-red` → `#9B1C1C` — red accent, CTAs, underline accents, active nav indicator
+- `brand-red-dark` → `#7A1515` — CTA hover state only
+- `brand-black` → `#0A0A0A` — body text
 - `#FFFFFF` — all page backgrounds
 
 ## File Map
-- `app/page.tsx` — Home (hero, about snippet, services teaser, featured projects)
-- `app/services/page.tsx` — Services grid + credentials bar
-- `app/projects/page.tsx` — Projects split into Federal/Military and HUD categories
-- `app/about/page.tsx` — Company story, stats strip, phone/email, contact form
-- `app/layout.tsx` — Root layout with Navbar + Footer
-- `components/Navbar.tsx` — Sticky nav, responsive logo, mobile hamburger
-- `components/Footer.tsx` — Navy footer, logo_concise.png (inverted white), nav links, contact info
-- `components/Logo.tsx` — Legacy SVG logo (no longer used in nav/footer; kept for reference)
-- `components/ServiceIcon.tsx` — SVG icon map keyed by service id
-- `lib/data.ts` — Single source of truth for all services[] and projects[] content
+- `app/page.tsx` — Home (hero with centered logo + CTAs, about snippet, core capabilities)
+- `app/projects/page.tsx` — Projects grouped by the three capabilities
+- `app/layout.tsx` — Root layout with Navbar + Footer; loads Inter font
+- `components/Navbar.tsx` — Sticky nav, responsive logo, mobile hamburger (only client component)
+- `components/Footer.tsx` — Navy footer, logo, nav links, email + site link
+- `lib/data.ts` — Single source of truth for `capabilities[]` and `projects[]`
+
+There is currently no services page, about page, or contact form.
 
 ## Content Updates
-All site content lives in `lib/data.ts`. To add/edit services or projects, edit the typed arrays there — no other files need to change.
+All site content lives in `lib/data.ts`. To add/edit capabilities or projects, edit the typed arrays there — no other files need to change.
 
-Projects have a `category` field: `"federal"` or `"hud"`. The projects page groups them automatically.
+Each project has a `category` field — one of `"design-build"`, `"modernization"`, or `"assessment"` (matching a capability `id`). The projects page groups projects under their capability automatically.
 
 ## Logo Files
-- `public/logo/logo_full.png` — used in Navbar (dark background safe)
-- `public/logo/logo_concise.png` — used in Footer with `brightness-0 invert` CSS filter to render white on navy
+- `public/logo/logo_kdb.jpg` — the only logo, used in Navbar, hero, and Footer (via `next/image`). The Footer wraps it in a white box because the JPG has a baked-in white background.
 
 ## Pending Work
-- Wire up Resend for real email sending from the About page contact form
-- Swap placeholder images in `public/images/project-1.jpg` through `project-7.jpg` with real project photos
+- Project photos: each project will have ~4 photos (see `project.image`, currently an unused placeholder field — gallery/data model still to be designed). No photos are wired up yet.
+- A cleaner/transparent logo asset (PNG or SVG) would shrink the source and remove the Footer white-box workaround.
 - Verify `koodb.com` domain and point DNS to Vercel after deployment

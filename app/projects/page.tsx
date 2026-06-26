@@ -11,8 +11,8 @@ export default function ProjectsPage() {
       <section className="bg-white pt-32 pb-16 px-6 lg:px-8 border-b border-black/10">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-5xl lg:text-6xl font-extrabold text-navy">Projects</h1>
-          <div className="mt-4 h-px w-16 bg-[#9B1C1C]" />
-          <p className="mt-6 text-lg text-[#0A0A0A]/70 max-w-xl">
+          <div className="mt-4 h-px w-16 bg-brand-red" />
+          <p className="mt-6 text-lg text-brand-black/70 max-w-xl">
             Representative work across our three core capabilities — design-build delivery,
             facility modernization, and facility assessment &amp; capital planning.
           </p>
@@ -26,7 +26,7 @@ export default function ProjectsPage() {
             return (
               <div key={capability.id} id={capability.id} className="scroll-mt-28">
                 <div className="flex items-center gap-6 mb-12">
-                  <h2 className="text-xs font-semibold uppercase tracking-widest text-[#0A0A0A]/40 whitespace-nowrap">
+                  <h2 className="text-xs font-semibold uppercase tracking-widest text-brand-black/40 whitespace-nowrap">
                     {capability.title}
                   </h2>
                   <div className="flex-1 h-px bg-black/10" />
@@ -61,13 +61,13 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
       <div className="mt-4">
         <h3 className="font-bold text-navy text-base">{project.title}</h3>
-        <p className="text-sm text-[#0A0A0A]/50 mt-1">
+        <p className="text-sm text-brand-black/50 mt-1">
           {project.client} · {project.location} · {project.year}
         </p>
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#9B1C1C] mt-2">
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand-red mt-2">
           {project.contractType}
         </p>
-        <p className="text-sm text-[#0A0A0A]/70 mt-3 leading-relaxed">
+        <p className="text-sm text-brand-black/70 mt-3 leading-relaxed">
           {project.description}
         </p>
       </div>

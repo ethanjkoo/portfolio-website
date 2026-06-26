@@ -21,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-[#0A0A0A]">
+      <body className="min-h-full flex flex-col bg-white text-brand-black">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
