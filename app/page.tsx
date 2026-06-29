@@ -25,7 +25,7 @@ export default function HomePage() {
               href="/projects"
               className="inline-block bg-brand-red text-white px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-brand-red-dark transition-colors"
             >
-              View Our Work
+              Projects
             </Link>
             <Link
               href="#capabilities"

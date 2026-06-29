@@ -96,14 +96,14 @@ export default function ProjectCard({ project }: { project: Project }) {
             ×
           </button>
 
-          {/* Image — full-bleed, ~70% of the screen */}
-          <div className="relative order-1 lg:order-2 h-[45vh] lg:h-full lg:flex-1 bg-navy/5">
+          {/* Image — ~70% of the screen, scaled to show the full photo */}
+          <div className="relative order-1 lg:order-2 h-[45vh] lg:h-full lg:flex-1 bg-white">
             <Image
               src={photos[index]}
               alt={`${project.title} — photo ${index + 1}`}
               fill
               sizes="(min-width: 1024px) 70vw, 100vw"
-              className="object-cover"
+              className="object-contain"
               priority
             />
 

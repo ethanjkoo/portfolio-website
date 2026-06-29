@@ -28,16 +28,21 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 sm:h-22 md:h-24 flex items-center justify-between">
-        <Link href="/" onClick={() => setMenuOpen(false)}>
-          <Image
-            src="/logo/logo_kdb.jpg"
-            alt="KOO Design Build"
-            height={80}
-            width={264}
-            className="h-8 sm:h-10 md:h-12 w-auto object-contain"
-            priority
-          />
-        </Link>
+        {pathname === "/" ? (
+          // Home shows the large centered hero logo, so skip the redundant navbar one.
+          <div aria-hidden />
+        ) : (
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            <Image
+              src="/logo/logo_kdb.jpg"
+              alt="KOO Design Build"
+              height={80}
+              width={264}
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+              priority
+            />
+          </Link>
+        )}
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">

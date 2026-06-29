@@ -13,10 +13,6 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto">
           <h1 className="text-5xl lg:text-6xl font-extrabold text-navy">Projects</h1>
           <div className="mt-4 h-px w-16 bg-brand-red" />
-          <p className="mt-6 text-lg text-brand-black/70 max-w-xl">
-            Representative work across our three core capabilities — design-build delivery,
-            facility modernization, and facility assessment &amp; capital planning.
-          </p>
         </div>
       </section>
 
