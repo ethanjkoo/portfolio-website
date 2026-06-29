@@ -15,9 +15,13 @@ export interface Project {
   year: string;
   contractType: string;
   description: string;
-  image: string;
+  images: string[];
   category: CapabilityId;
 }
+
+// Builds the ordered photo paths for a project: /images/projects/<id>/1.jpg …
+const gallery = (id: string, count: number): string[] =>
+  Array.from({ length: count }, (_, i) => `/images/projects/${id}/${i + 1}.jpg`);
 
 export const capabilities: Capability[] = [
   {
@@ -62,7 +66,7 @@ export const projects: Project[] = [
     contractType: "Design-Build",
     description:
       "Design-build delivery of a pre-engineered training facility to house a Mine Resistant Ambush Protected (MRAP) Egress Trainer, including structural design, reinforced concrete foundations, utility connections, security fencing, electrical systems, and supporting site improvements.",
-    image: "/images/project-1.jpg",
+    images: gallery("mrap-egress-trainer", 3),
     category: "design-build",
   },
   {
@@ -74,7 +78,7 @@ export const projects: Project[] = [
     contractType: "Design-Build – Infrastructure Development",
     description:
       "Design-build construction of a new fueling station featuring a 12,000-gallon above-ground fuel storage tank, fueling equipment, concrete fueling aprons, shade canopy, and associated site improvements.",
-    image: "/images/project-2.jpg",
+    images: gallery("calexico-fueling-station", 4),
     category: "design-build",
   },
   {
@@ -86,7 +90,7 @@ export const projects: Project[] = [
     contractType: "Design-Build – Housing Development",
     description:
       "Design-build construction of six permanent residential units for FAA personnel within Grand Canyon National Park, including ADA-accessible housing accommodations and supporting site improvements.",
-    image: "/images/project-3.jpg",
+    images: gallery("grand-canyon-ranger-quarters", 4),
     category: "design-build",
   },
   {
@@ -98,7 +102,7 @@ export const projects: Project[] = [
     contractType: "Design-Build – Aviation Support Facility",
     description:
       "Design-build delivery of a new helibase facility supporting U.S. Forest Service wildfire operations, including site development, helicopter landing areas, administrative facilities, maintenance buildings, utilities, and supporting infrastructure.",
-    image: "/images/project-4.jpg",
+    images: gallery("usfs-payson-helibase", 5),
     category: "design-build",
   },
 
@@ -112,7 +116,7 @@ export const projects: Project[] = [
     contractType: "Building Modernization",
     description:
       "Renovated aircraft hangar and administrative facilities, including HVAC modifications, electrical upgrades, communications infrastructure improvements, life-safety enhancements, interior renovations, and building system modernization.",
-    image: "/images/project-5.jpg",
+    images: gallery("davis-monthan-hangar", 4),
     category: "modernization",
   },
   {
@@ -124,7 +128,7 @@ export const projects: Project[] = [
     contractType: "Facility Rehabilitation & Infrastructure Improvements",
     description:
       "Provided rehabilitation and infrastructure improvement services at multiple National Park Service facilities, including visitor center renovations, employee housing upgrades, maintenance facility improvements, utility infrastructure enhancements, and pavement preservation projects.",
-    image: "/images/project-6.jpg",
+    images: gallery("nps-facilities-rehab", 6),
     category: "modernization",
   },
   {
@@ -136,7 +140,7 @@ export const projects: Project[] = [
     contractType: "HVAC Modernization",
     description:
       "Modernized HVAC systems serving 16 staff housing units and a maintenance facility, including replacement of aging mechanical equipment, controls integration, ductwork improvements, and associated building system upgrades to improve reliability, energy efficiency, and occupant comfort.",
-    image: "/images/project-7.jpg",
+    images: gallery("nps-organ-pipe-hvac", 4),
     category: "modernization",
   },
   {
@@ -148,7 +152,7 @@ export const projects: Project[] = [
     contractType: "Design-Build HVAC Modernization",
     description:
       "Design-build replacement of aging HVAC equipment serving an administrative facility, including installation of new mechanical systems, controls upgrades, and associated building improvements to enhance reliability, energy efficiency, and occupant comfort.",
-    image: "/images/project-1.jpg",
+    images: gallery("fws-san-luis-hvac", 4),
     category: "modernization",
   },
 
@@ -162,7 +166,7 @@ export const projects: Project[] = [
     contractType: "Property Condition Assessment (PCA)",
     description:
       "Completed hundreds of Property Condition Assessments in accordance with ASTM E2018 standards for multifamily, commercial, industrial, hospitality, healthcare, and institutional properties, supporting due diligence, lending, acquisition, capital planning, and asset management decisions.",
-    image: "/images/project-2.jpg",
+    images: gallery("pca-astm-e2018", 9),
     category: "assessment",
   },
   {
@@ -174,7 +178,7 @@ export const projects: Project[] = [
     contractType: "Construction Monitoring & Quality Assurance Inspection",
     description:
       "Provided construction monitoring, contract administration, ADA compliance reviews, and quality assurance inspections for HUD-funded multifamily housing rehabilitation and new construction projects, including senior housing developments, apartment complexes, and more than 1,000 project site inspections.",
-    image: "/images/project-3.jpg",
+    images: gallery("hud-multifamily-inspection", 6),
     category: "assessment",
   },
   {
@@ -186,7 +190,7 @@ export const projects: Project[] = [
     contractType: "Construction Management & Quality Assurance Inspection",
     description:
       "Provided construction management, quality assurance inspections, and owner support services for facility improvement projects supporting the F-35 program, including fire protection upgrades, fuel infrastructure improvements, building system modernization, and interior renovations.",
-    image: "/images/project-4.jpg",
+    images: gallery("luke-afb-f35", 4),
     category: "assessment",
   },
   {
@@ -198,7 +202,7 @@ export const projects: Project[] = [
     contractType: "Construction Monitoring & Quality Assurance Inspection",
     description:
       "Provided construction monitoring, quality assurance inspections, design review support, and contract administration services for a new multifamily housing development, including site development, utility infrastructure, building construction observations, and occupancy certification support.",
-    image: "/images/project-5.jpg",
+    images: gallery("htha-winslow-apartments", 4),
     category: "assessment",
   },
 ];

@@ -42,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source photo originals (resized copies live in public/images/projects)
+/Web PICs/

@@ -1,4 +1,5 @@
-import { capabilities, projects, type Project } from "@/lib/data";
+import { capabilities, projects } from "@/lib/data";
+import ProjectCard from "@/components/ProjectCard";
 
 export const metadata = {
   title: "Projects — KOO Design Build",
@@ -42,35 +43,5 @@ export default function ProjectsPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <div className="group">
-      {/* Image / placeholder with hover overlay */}
-      <div className="relative h-32 sm:h-36 bg-navy/5 border border-black/10 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center text-navy/20 text-xs uppercase tracking-widest">
-          Project Photo
-        </div>
-        <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/80 transition-colors duration-300 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100">
-          <p className="text-white font-bold text-base">{project.title}</p>
-          <p className="text-white/80 text-sm mt-1">{project.location}</p>
-          <p className="text-white/60 text-xs mt-1">{project.client}</p>
-        </div>
-      </div>
-      <div className="mt-4">
-        <h3 className="font-bold text-navy text-base">{project.title}</h3>
-        <p className="text-sm text-brand-black/50 mt-1">
-          {project.client} · {project.location} · {project.year}
-        </p>
-        <p className="text-xs font-semibold uppercase tracking-widest text-brand-red mt-2">
-          {project.contractType}
-        </p>
-        <p className="text-sm text-brand-black/70 mt-3 leading-relaxed">
-          {project.description}
-        </p>
-      </div>
-    </div>
   );
 }

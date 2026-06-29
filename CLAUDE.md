@@ -23,7 +23,8 @@ Use the Tailwind tokens, not inline hex — e.g. `bg-brand-red`, `text-brand-bla
 - `app/page.tsx` — Home (hero with centered logo + CTAs, about snippet, core capabilities)
 - `app/projects/page.tsx` — Projects grouped by the three capabilities
 - `app/layout.tsx` — Root layout with Navbar + Footer; loads Inter font
-- `components/Navbar.tsx` — Sticky nav, responsive logo, mobile hamburger (only client component)
+- `components/Navbar.tsx` — Sticky nav, responsive logo, mobile hamburger (client component)
+- `components/ProjectCard.tsx` — Client component: project card with primary photo + click-to-open lightbox gallery (keyboard nav, thumbnail strip)
 - `components/Footer.tsx` — Navy footer, logo, nav links, email + site link
 - `lib/data.ts` — Single source of truth for `capabilities[]` and `projects[]`
 
@@ -34,10 +35,12 @@ All site content lives in `lib/data.ts`. To add/edit capabilities or projects, e
 
 Each project has a `category` field — one of `"design-build"`, `"modernization"`, or `"assessment"` (matching a capability `id`). The projects page groups projects under their capability automatically.
 
+Each project's `images` array is built by the `gallery(id, count)` helper and resolves to `/images/projects/<id>/1.jpg … N.jpg`. The first image is the card photo; all images appear in the lightbox. Source photos are resized to max 1600px (JPEG) under `public/images/projects/<id>/`.
+
 ## Logo Files
 - `public/logo/logo_kdb.jpg` — the only logo, used in Navbar, hero, and Footer (via `next/image`). The Footer wraps it in a white box because the JPG has a baked-in white background.
 
 ## Pending Work
-- Project photos: each project will have ~4 photos (see `project.image`, currently an unused placeholder field — gallery/data model still to be designed). No photos are wired up yet.
+- Two photo folders in `Web PICs/` have no matching project in `lib/data.ts` and are not yet on the site: "Navajo Housing Authority Birdsprings Elderly Group Home" and "Town of Clifton Community Center". Add project entries (with descriptions/metadata) if these should be shown.
 - A cleaner/transparent logo asset (PNG or SVG) would shrink the source and remove the Footer white-box workaround.
 - Verify `koodb.com` domain and point DNS to Vercel after deployment
