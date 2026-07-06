@@ -20,6 +20,20 @@ export default function HomePage() {
           <p className="mt-8 text-xl lg:text-2xl text-brand-black font-light tracking-wide">
             Assessment • Planning • Design • Construction
           </p>
+          <div className="mt-10 max-w-2xl text-left">
+            <p className="text-base lg:text-lg text-brand-black/70 leading-8">
+              Since 1998, KOO design-build, inc. (dba: KDB) has provided assessment, planning,
+              design, and construction services for institutional, state, tribal, and federal
+              clients. Our expertise spans property condition assessments, capital planning,
+              architecture, engineering, construction management, and design-build project delivery.
+            </p>
+            <p className="text-base lg:text-lg text-brand-black/70 leading-8 mt-5">
+              By combining technical evaluation with practical construction experience, we help
+              owners assess existing facilities, plan future improvements, modernize aging
+              infrastructure, and successfully deliver projects that enhance performance and
+              maximize long-term asset value.
+            </p>
+          </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/projects"
@@ -37,40 +51,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About */}
-      <section className="bg-white py-24 px-6 lg:px-8 border-t border-black/10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl font-extrabold text-navy mb-6">About KDB</h2>
-            <p className="text-brand-black leading-relaxed">
-              Since 1998, KOO design-build, inc. (dba: KDB) has provided assessment, planning,
-              design, and construction services for institutional, state, tribal, and federal
-              clients. Our expertise spans property condition assessments, capital planning,
-              architecture, engineering, construction management, and design-build project delivery.
-            </p>
-            <p className="text-brand-black leading-relaxed mt-4">
-              By combining technical evaluation with practical construction experience, we help
-              owners assess existing facilities, plan future improvements, modernize aging
-              infrastructure, and successfully deliver projects that enhance performance and
-              maximize long-term asset value.
-            </p>
-          </div>
-          <div className="flex flex-col gap-8">
-            {[
-              { stat: "25+", label: "Years of Building Experience" },
-              { stat: "1,000+", label: "HUD Construction Inspections" },
-              { stat: "100s", label: "ASTM E2018 Property Condition Assessments" },
-            ].map(({ stat, label }) => (
-              <div key={label} className="border-l-2 border-brand-red pl-6">
-                <p className="text-3xl font-extrabold text-navy">{stat}</p>
-                <p className="text-xs text-brand-black/60 uppercase tracking-widest mt-1">
-                  {label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Core Capabilities */}
       <section
