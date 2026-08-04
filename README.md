@@ -1,83 +1,102 @@
-# KOO Design Build — Website
+# KOO Design Build — Company Website
 
-Professional website for [KOO Design Build](http://koodb.com), a design-construction firm founded in 1998 serving U.S. Federal government, local municipalities, and commercial clients.
+A marketing and project-portfolio site for KOO Design Build (KDB), a design-construction
+firm that has delivered assessment, design, and construction work for federal, state,
+tribal, and institutional clients since 1998.
+
+The firm's existing site at koodb.com was outdated and served over an expired TLS
+certificate. This is a replacement: a static site that presents the firm's three core
+capabilities and the project record behind each one, with photography for every project.
+
+The site is organized around three capabilities — Design-Build, Facility Modernization,
+and Facility Assessment & Capital Planning. Each has its own route listing the projects
+in that category, and each project card opens a full-screen photo gallery.
 
 ## Tech Stack
 
-- **Next.js 16** (App Router, TypeScript)
-- **Tailwind CSS 4**
-- **Google Fonts: Inter**
-- **Vercel** (deployment)
+- **Next.js 16.2.6** — App Router, Turbopack, all routes statically prerendered
+- **React 19.2**
+- **TypeScript 5.9** — `strict` mode
+- **Tailwind CSS 4** — theme tokens declared with `@theme` in `app/globals.css`
+- **Inter** via `next/font/google`
+- **Vercel** for hosting
 
-## Pages
+There is no database, no API route, and no server-side runtime. `next build` emits five
+static pages and the site has no environment variables to configure.
 
-| Route | Description |
-|-------|-------------|
-| `/` | Home — hero, about snippet, services teaser, featured projects |
-| `/services` | Full services grid with ICC credentials bar |
-| `/projects` | Projects split by Federal/Military and HUD categories |
-| `/about` | Company story, stats, contact info, and contact form |
-
-## Getting Started
-
-Install dependencies:
+## Running Locally
 
 ```bash
 npm install
+npm run dev      # http://localhost:3000
 ```
 
-Run the development server:
+Other scripts:
 
 ```bash
-npm run dev
+npm run build    # production build; also runs the TypeScript check
+npm start        # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Next.js 16 requires Node 20.9 or newer.
 
-## Project Structure
+## Routes
 
-```
-koo-design-build/
-├── app/
-│   ├── layout.tsx          # Root layout (Navbar + Footer)
-│   ├── page.tsx            # Home page
-│   ├── services/page.tsx   # Services page
-│   ├── projects/page.tsx   # Projects page
-│   └── about/page.tsx      # About page
-├── components/
-│   ├── Navbar.tsx          # Sticky responsive navigation
-│   ├── Footer.tsx          # Navy footer with logo and contact info
-│   ├── Logo.tsx            # SVG logo (legacy, kept for reference)
-│   └── ServiceIcon.tsx     # SVG icon set for services
-├── lib/
-│   └── data.ts             # All site content (services + projects)
-├── public/
-│   ├── logo/               # Logo PNGs
-│   └── images/             # Project photos (project-1.jpg … project-7.jpg)
-└── app/globals.css         # Tailwind theme (navy, red, black color vars)
-```
+| Route | Contents |
+|---|---|
+| `/` | Logo hero, company summary, and the three capability cards |
+| `/design-build` | Design-build projects |
+| `/modernization` | Facility modernization and infrastructure upgrade projects |
+| `/assessment` | Facility assessment and capital planning projects |
 
-## Updating Content
+## What's Technically Interesting
 
-All text content lives in `lib/data.ts`. Edit the `services` and `projects` arrays there — no component changes required.
+**Content is a typed module, not a CMS.** All twelve projects and three capabilities live
+in `lib/data.ts` as typed arrays. A `CapabilityId` union type (`"design-build" |
+"modernization" | "assessment"`) is used for three things at once: the capability's `id`,
+the project's `category`, and the route folder name. Assigning a project to a category
+that doesn't exist is a compile error rather than an empty page discovered later.
 
-To add a project, append an entry to the `projects` array with the appropriate `category`:
-- `"federal"` — appears under Federal & Military
-- `"hud"` — appears under HUD Inspection & Construction Management
+**Navigation is derived, not written twice.** The navbar and footer both build their link
+lists by mapping over the same `capabilities` array. Adding a capability adds its nav
+entry, footer entry, home-page card, and CTA button; only the route folder has to be
+created by hand.
 
-## Adding Project Photos
+**One component serves three routes.** `/design-build`, `/modernization`, and
+`/assessment` are each a five-line file that renders `<CapabilityProjects id="..." />`.
+The shared component pulls the heading, tagline, and filtered project list from the data
+module, so the three pages cannot drift apart in layout.
 
-Drop images into `public/images/` named `project-1.jpg` through `project-7.jpg`. They map directly to the `image` field in each project entry in `lib/data.ts`.
+**Image paths are generated by convention.** A `gallery(id, count)` helper expands to
+`/images/projects/<id>/1.jpg … N.jpg`, so adding photos to a project means dropping files
+into a folder and changing one number rather than writing out 57 individual paths.
 
-## Deployment
+**The gallery is a hand-rolled lightbox.** `components/ProjectCard.tsx` implements a
+full-screen photo takeover with arrow-key and Escape handling, a thumbnail strip, wrapping
+prev/next navigation, and body-scroll locking that restores the previous `overflow` value
+on close. It is marked `role="dialog"` with `aria-modal`, and every control has an
+accessible label. No carousel dependency — the whole thing is `useState`, `useCallback`,
+and one `useEffect`.
 
-This project is configured for deployment on [Vercel](https://vercel.com). Connect the GitHub repository to a Vercel project and it will deploy automatically on every push to `main`.
+**Images are optimized by the framework.** Photos render through `next/image` with `fill`
+and explicit `sizes` hints, so each viewport gets an appropriately sized source; the hero
+logo and the active gallery photo are marked `priority`.
 
-## Contact Form
+## Design Constraints
 
-The contact form on `/about` is currently UI-only (no email is sent). To enable real email delivery, integrate [Resend](https://resend.com):
+These came from the client and are deliberate, not oversights:
 
-1. Create a free Resend account and obtain an API key
-2. Add `RESEND_API_KEY=your_key` to a `.env.local` file
-3. Create `app/api/contact/route.ts` to handle POST requests and send via the Resend SDK
-4. Update the form's `handleSubmit` in `app/about/page.tsx` to POST to `/api/contact`
+- No physical address appears anywhere on the site — email and website link only
+- No contact form; the footer carries a `mailto:` link
+- Red (`#9B1C1C`) is an accent only — CTAs, rules, and active states, never a background fill
+- All page backgrounds are white; navy (`#1B2A4A`) is for text, headings, and the footer
+
+## Maintenance
+
+All site content lives in `lib/data.ts` — editing the `capabilities` and `projects` arrays
+is sufficient to change copy, add a project, or reorder anything. No component edits are
+needed.
+
+To add a project: create `public/images/projects/<id>/` with photos numbered `1.jpg`
+upward (resized to 1600px on the long edge), then append an entry to `projects` with a
+matching `id`, a `category`, and `images: gallery("<id>", <count>)`.
