@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { capabilities } from "@/lib/data";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
+  ...capabilities.map((c) => ({ href: `/${c.id}`, label: c.navLabel })),
 ];
 
 export default function Navbar() {

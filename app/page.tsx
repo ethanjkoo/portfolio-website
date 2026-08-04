@@ -18,7 +18,7 @@ export default function HomePage() {
           />
           <div className="mt-8 h-px w-24 bg-brand-red" />
           <p className="mt-8 text-xl lg:text-2xl text-brand-black font-light tracking-wide">
-            Assessment • Planning • Design • Construction
+            Assessment • Design • Construction
           </p>
           <div className="mt-10 max-w-2xl text-left">
             <p className="text-base lg:text-lg text-brand-black/70 leading-8">
@@ -35,18 +35,15 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/projects"
-              className="inline-block bg-brand-red text-white px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:bg-brand-red-dark transition-colors"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#capabilities"
-              className="inline-block border border-navy/20 text-navy px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:border-navy/50 transition-colors"
-            >
-              Core Capabilities
-            </Link>
+            {capabilities.map((capability) => (
+              <Link
+                key={capability.id}
+                href={`/${capability.id}`}
+                className="inline-block border border-navy/20 text-navy px-8 py-4 text-xs font-semibold tracking-widest uppercase hover:border-navy/50 hover:text-brand-red transition-colors"
+              >
+                {capability.navLabel}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -66,7 +63,7 @@ export default function HomePage() {
             {capabilities.map((capability) => (
               <Link
                 key={capability.id}
-                href={`/projects#${capability.id}`}
+                href={`/${capability.id}`}
                 className="flex flex-col border border-black/10 p-8 hover:border-navy/20 transition-colors group"
               >
                 <h3 className="text-base font-bold text-navy group-hover:text-navy/70 transition-colors">

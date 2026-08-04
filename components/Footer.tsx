@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { capabilities } from "@/lib/data";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
+  ...capabilities.map((c) => ({ href: `/${c.id}`, label: c.navLabel })),
 ];
 
 export default function Footer() {

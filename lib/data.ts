@@ -3,6 +3,7 @@ export type CapabilityId = "design-build" | "modernization" | "assessment";
 export interface Capability {
   id: CapabilityId;
   title: string;
+  navLabel: string;
   tagline: string;
   items: string[];
 }
@@ -27,12 +28,14 @@ export const capabilities: Capability[] = [
   {
     id: "design-build",
     title: "Design-Build",
+    navLabel: "Design-Build",
     tagline: "Integrated design and construction delivery from concept through completion.",
     items: ["Architecture", "Engineering", "Design-Build", "Construction Management"],
   },
   {
     id: "modernization",
     title: "Facility Modernization & Infrastructure Upgrades",
+    navLabel: "Modernization",
     tagline: "Renewing aging facilities and critical building systems.",
     items: [
       "HVAC Systems",
@@ -44,6 +47,7 @@ export const capabilities: Capability[] = [
   {
     id: "assessment",
     title: "Facility Assessment & Capital Planning",
+    navLabel: "Assessment",
     tagline: "Evaluating existing assets to guide planning and investment.",
     items: [
       "Property Condition Assessments",
