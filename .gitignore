@@ -19,10 +19,30 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# AI assistant working state (not part of the project)
+.claude/
+.cursor/
+.aider*
+CLAUDE.md
+AGENTS.md
+handoff.md
 
 # content source docs (not part of the site)
 *.docx
